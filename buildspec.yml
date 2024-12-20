@@ -5,7 +5,6 @@ phases:
     commands:
       - apt-get update -y
       - apt-get install -y docker.io
-      - service docker start
   pre_build:
     commands:
       - docker --version || echo "Docker not found"
