@@ -21,4 +21,5 @@ artifacts:
   files: 
     - appspec.yaml
     - imagedefinitions.json
+    - Dockerfile
 
