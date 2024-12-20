@@ -16,6 +16,6 @@ phases:
   post_build:
     commands:
       - docker push 503561421839.dkr.ecr.ap-south-1.amazonaws.com/cicd-container-repo:latest
-      - printf '[{"name":"cicd-task-definition","imageUri":"%s"}]' 503561421839.dkr.ecr.ap-south-1.amazonaws.com/cicd-container-repo:latest > imagedefinitions.json
+      - printf '[{"name":"cicd-task-definition:2","imageUri":"%s"}]' 503561421839.dkr.ecr.ap-south-1.amazonaws.com/cicd-container-repo:latest > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
