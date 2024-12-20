@@ -7,8 +7,8 @@ phases:
       - aws --version || echo "AWS CLI not found"
       - export PATH=$PATH:/usr/bin:/usr/local/bin
       - which docker  # Check the path of Docker
-      - /bin/bash -c "aws ecr get-login-password --region ap-south-1 | \
-       docker login --username AWS --password-stdin 503561421839.dkr.ecr.ap-south-1.amazonaws.com/cicd-container-repo:latest"
+      - LOGIN_PASSWORD=$(aws ecr get-login-password --region ap-south-1)
+      - echo "$LOGIN_PASSWORD" | docker login --username AWS --password-stdin 503561421839.dkr.ecr.ap-south-1.amazonaws.com/cicd-container-repo:latest"
   build:
     commands:
       - docker build -t cicd-container-repo:latest .
