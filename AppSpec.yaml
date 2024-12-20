@@ -1,0 +1,9 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:ap-south-1:503561421839:task-definition/cicd-task-definition:2"
+        LoadBalancerInfo:
+          ContainerName: "node-express"
+          ContainerPort: 80
