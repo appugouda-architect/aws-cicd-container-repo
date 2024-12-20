@@ -18,5 +18,7 @@ phases:
       - printf '[{"name":"cicd-task-definition","imageUri":"%s"}]' 503561421839.dkr.ecr.ap-south-1.amazonaws.com/cicd-container-repo:latest > imagedefinitions.json
       - cat imagedefinitions.json
 artifacts:
-  files: imagedefinitions.json
+  files: 
+    - appspec.yaml
+    - imagedefinitions.json
 
