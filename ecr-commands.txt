@@ -6,7 +6,7 @@ docker login --username AWS --password-stdin <<AWS_ACCOUNT_ID>>.dkr.ecr.<<REGION
 docker build -t <<IMAGE_NAME>>:<<TAG>> .             // . indicates current working directory
 
 // tag the docker image : version docker image
-docker tag <<IMAGE_NAME>> <<ECR_URL>>
+docker tag <<IMAGE_NAME>> <<ECR_URL>>/<<IMAGE_NAME>>:<<TAG>>
 
 // push to docker image to ECR private repository 
-docker push <<ECR_URL>> <<AWS_ACCOUNT_ID>>.dkr.ecr.<<REGION>>.amazonaws.com/cicd-container-repo:<TAG>
+docker push <<AWS_ACCOUNT_ID>>.dkr.ecr.<<REGION>>.amazonaws.com/cicd-container-repo:<TAG>

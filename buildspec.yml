@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      # - $(aws ecr get-login --no-include-email --region us-east-1)
+      - aws ecr get-login-password --region ap-south-1 | \
+        docker login --username AWS --password-stdin 503561421839.dkr.ecr.ap-south-1.amazonaws.com/cicd-container-repo
+  build:
+    commands:
+      - docker build -t cicd-container-repo:latest .
+      - docker tag cicd-container-repo:latest 503561421839.dkr.ecr.ap-south-1.amazonaws.com/cicd-container-repo:latest
+  post_build:
+    commands:
+      - docker push 503561421839.dkr.ecr.ap-south-1.amazonaws.com/cicd-container-repo:latest
+      - printf '[{"name":"cicd-task-definition","imageUri":"%s"}]' 503561421839.dkr.ecr.ap-south-1.amazonaws.com/cicd-container-repo:latest > imagedefinitions.json
+artifacts:
+  files: imagedefinitions.json
