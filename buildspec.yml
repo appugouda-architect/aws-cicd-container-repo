@@ -6,7 +6,7 @@ phases:
       - docker --version || echo "Docker not found"
       - aws --version || echo "AWS CLI not found"
       - aws ecr get-login-password --region ap-south-1 | \
-       docker login --username AWS --password-stdin 503561421839.dkr.ecr.ap-south-1.amazonaws.com/cicd-container-repo
+       docker login --username AWS --password-stdin 503561421839.dkr.ecr.ap-south-1.amazonaws.com/cicd-container-repo:latest
   build:
     commands:
       - docker build -t cicd-container-repo:latest .
